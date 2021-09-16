@@ -1,4 +1,4 @@
-import { RedirectData } from "@sls-next/core";
+import { RedirectData } from "@serverless-stack/nextjs-core";
 
 /**
  * Whether this is the default trailing slash redirect.

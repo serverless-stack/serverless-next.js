@@ -16,7 +16,7 @@ import {
   getStaticRegenerationResponse,
   getThrottledStaticRegenerationCachePolicy,
   handlePublicFiles
-} from "@sls-next/core";
+} from "@serverless-stack/nextjs-core";
 
 import {
   CloudFrontRequest,

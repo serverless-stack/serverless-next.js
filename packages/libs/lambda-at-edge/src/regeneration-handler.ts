@@ -6,7 +6,7 @@ import {
   RegenerationEvent
 } from "./types";
 import { s3StorePage } from "./s3/s3StorePage";
-import { renderPageToHtml } from "@sls-next/core";
+import { renderPageToHtml } from "@serverless-stack/nextjs-core";
 
 export const handler = async (event: AWSLambda.SQSEvent): Promise<void> => {
   await Promise.all(

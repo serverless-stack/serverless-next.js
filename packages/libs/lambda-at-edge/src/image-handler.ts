@@ -9,9 +9,12 @@ import {
   RoutesManifest
 } from "./types";
 import { CloudFrontResultResponse } from "aws-lambda";
-import { setCustomHeaders } from "@sls-next/core";
+import { setCustomHeaders } from "@serverless-stack/nextjs-core";
 import lambdaAtEdgeCompat from "@sls-next/next-aws-cloudfront";
-import { handleAuth, handleDomainRedirects } from "@sls-next/core";
+import {
+  handleAuth,
+  handleDomainRedirects
+} from "@serverless-stack/nextjs-core";
 import { UrlWithParsedQuery } from "url";
 import url from "url";
 import { imageOptimizer } from "./images/imageOptimizer";

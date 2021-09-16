@@ -16,8 +16,8 @@ import { isTrailingSlashRedirect } from "./routing/redirector";
 import readDirectoryFiles from "./lib/readDirectoryFiles";
 import filterOutDirectories from "./lib/filterOutDirectories";
 import { Job } from "@vercel/nft/out/node-file-trace";
-import { prepareBuildManifests } from "@sls-next/core";
-import { NextConfig } from "@sls-next/core/dist/build";
+import { prepareBuildManifests } from "@serverless-stack/nextjs-core";
+import { NextConfig } from "@serverless-stack/nextjs-core/dist/build";
 import { NextI18nextIntegration } from "./build/third-party/next-i18next";
 import normalizePath from "normalize-path";
 
@@ -225,7 +225,7 @@ class Builder {
   ): Promise<void> {
     const source = path.dirname(
       require.resolve(
-        `@sls-next/lambda-at-edge/dist/${handlerType}/${
+        `@serverless-stack/nextjs-lambda/dist/${handlerType}/${
           shouldMinify ? "minified" : "standard"
         }`
       )
@@ -491,7 +491,7 @@ class Builder {
       fse.copy(
         join(
           path.dirname(
-            require.resolve("@sls-next/lambda-at-edge/package.json")
+            require.resolve("@serverless-stack/nextjs-lambda/package.json")
           ),
           "dist",
           "sharp_node_modules"

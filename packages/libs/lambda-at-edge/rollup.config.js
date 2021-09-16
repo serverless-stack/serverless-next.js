@@ -30,7 +30,11 @@ const generateConfig = (input) => ({
     json(),
     commonjs(),
     externals({
-      exclude: ["@sls-next/next-aws-cloudfront", "@sls-next/core", "next"]
+      exclude: [
+        "@sls-next/next-aws-cloudfront",
+        "@serverless-stack/nextjs-core",
+        "next"
+      ]
     }),
     nodeResolve(),
     typescript({
