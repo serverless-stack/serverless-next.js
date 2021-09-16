@@ -57,6 +57,7 @@ export const prepareBuildManifests = async (
   };
 
   const apiManifest: ApiManifest = {
+    buildId,
     apis: {
       dynamic: [],
       nonDynamic: {}

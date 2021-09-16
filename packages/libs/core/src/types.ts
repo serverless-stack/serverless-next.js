@@ -58,6 +58,7 @@ export type NonDynamicSSG = {
 };
 
 export type Manifest = {
+  buildId: string;
   authentication?: {
     username: string;
     password: string;
@@ -79,7 +80,6 @@ export type ApiManifest = Manifest & {
 };
 
 export type PageManifest = Manifest & {
-  buildId: string;
   pages: {
     dynamic: DynamicRoute[];
     html: {
