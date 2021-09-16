@@ -3,9 +3,12 @@ import type {
   CloudFrontEvent,
   CloudFrontResponse
 } from "aws-lambda";
-import { ApiManifest, PageManifest } from "@serverless-stack/nextjs-core";
-export {
+import {
   Manifest,
+  ApiManifest,
+  PageManifest
+} from "@serverless-stack/nextjs-core";
+export {
   ImageConfig,
   ImagesManifest,
   RoutesManifest
