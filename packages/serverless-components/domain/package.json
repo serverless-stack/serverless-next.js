@@ -1,6 +1,6 @@
 {
   "name": "@sls-next/domain",
-  "version": "3.2.0",
+  "version": "0.1.1",
   "main": "serverless.js",
   "publishConfig": {
     "access": "public"
@@ -20,5 +20,6 @@
   "peerDependencies": {
     "@serverless/core": "^1.1.2",
     "aws-sdk": "^2.702.0"
-  }
+  },
+  "private": true
 }

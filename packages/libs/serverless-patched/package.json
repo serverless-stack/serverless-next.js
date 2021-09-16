@@ -1,6 +1,6 @@
 {
   "name": "@sls-next/serverless-patched",
-  "version": "3.4.0-alpha.5",
+  "version": "0.1.1",
   "description": "Patched serverless package",
   "publishConfig": {
     "access": "public"
@@ -46,5 +46,6 @@
   },
   "bin": {
     "serverless-patched": "./dist/serverless-patched.js"
-  }
+  },
+  "private": true
 }

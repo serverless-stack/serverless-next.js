@@ -1,6 +1,6 @@
 {
   "name": "@sls-next/serverless-cli",
-  "version": "3.4.0-alpha.2",
+  "version": "0.1.1",
   "description": "Serverless Components CLI (forked)",
   "main": "./src/index.js",
   "bin": {
@@ -35,5 +35,6 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.4.0"
-  }
+  },
+  "private": true
 }

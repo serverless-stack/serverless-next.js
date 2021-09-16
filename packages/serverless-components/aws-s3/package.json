@@ -1,6 +1,6 @@
 {
   "name": "@sls-next/aws-s3",
-  "version": "3.4.0-alpha.2",
+  "version": "0.1.1",
   "main": "./serverless.js",
   "publishConfig": {
     "access": "public"
@@ -39,5 +39,6 @@
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.4.0",
     "typescript": "^4.4.2"
-  }
+  },
+  "private": true
 }
