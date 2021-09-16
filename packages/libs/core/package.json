@@ -1,5 +1,5 @@
 {
-  "name": "@serverless-stack/nextjs-site-core",
+  "name": "@serverless-stack/nextjs-core",
   "version": "0.1.4",
   "description": "Handles Next.js routing independent of provider",
   "publishConfig": {
@@ -48,5 +48,5 @@
     "rimraf": "^3.0.2",
     "typescript": "^4.4.2"
   },
-  "gitHead": "afe7431be374dbab593b452c82b7565dfe891c7a"
+  "gitHead": "c7f339f25fd8f18093f65098c9b9d15359802921"
 }
