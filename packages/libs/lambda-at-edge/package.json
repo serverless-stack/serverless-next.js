@@ -1,5 +1,5 @@
 {
-  "name": "@sls-next/lambda-at-edge",
+  "name": "@serverless-stack/nextjs-site-lambda",
   "publishConfig": {
     "access": "public"
   },

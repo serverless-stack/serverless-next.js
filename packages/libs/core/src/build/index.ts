@@ -247,6 +247,10 @@ export const prepareBuildManifests = async (
 
   // Image manifest
   const imageManifest: Manifest = {
+    // SST: NextjsSite construct performs atomic deployment, and the site
+    // is deployed to a folder prefixed with the buildId. Image Lambda handler
+    // needs to know the buildId to be able to locate the S3 deployment folder.
+    buildId,
     authentication,
     domainRedirects: domainRedirects
   };

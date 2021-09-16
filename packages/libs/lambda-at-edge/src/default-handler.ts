@@ -204,13 +204,21 @@ const handleOriginRequest = async ({
 
   if (route.isPublicFile) {
     const { file } = route as PublicFileRoute;
-    return staticRequest(request, file, `${routesManifest.basePath}/public`);
+    // SST: NextjsSite construct performs atomic deployment, and the site
+    // is deployed to a folder prefixed with the buildId.
+    return staticRequest(
+      request,
+      file,
+      `${routesManifest.basePath}/deploy-${manifest.buildId}/public`
+    );
   }
   if (route.isStatic) {
     const { file, isData } = route as StaticRoute;
+    // SST: NextjsSite construct performs atomic deployment, and the site
+    // is deployed to a folder prefixed with the buildId.
     const path = isData
-      ? `${routesManifest.basePath}`
-      : `${routesManifest.basePath}/static-pages/${manifest.buildId}`;
+      ? `${routesManifest.basePath}/deploy-${manifest.buildId}`
+      : `${routesManifest.basePath}/deploy-${manifest.buildId}/static-pages/${manifest.buildId}`;
 
     const relativeFile = isData ? file : file.slice("pages".length);
     return staticRequest(request, relativeFile, path);
@@ -306,8 +314,10 @@ const handleOriginResponse = async ({
           throw new Error("Regeneration queue name is undefined.");
         }
 
+        // SST: NextjsSite construct performs atomic deployment, and the site
+        // is deployed to a folder prefixed with the buildId.
         const { throttle } = await triggerStaticRegeneration({
-          basePath,
+          basePath: `${basePath}/deploy-${manifest.buildId}`,
           request,
           response,
           pagePath: staticRoute.page,
@@ -367,7 +377,10 @@ const handleOriginResponse = async ({
     region: request.origin?.s3?.region,
     maxAttempts: 3
   });
-  const s3BasePath = basePath ? `${basePath.replace(/^\//, "")}/` : "";
+  // SST: NextjsSite construct performs atomic deployment, and the site
+  // is deployed to a folder prefixed with the buildId.
+  let s3BasePath = `${basePath}/deploy-${manifest.buildId}`;
+  s3BasePath = `${s3BasePath.replace(/^\//, "")}/`;
 
   // Either a fallback: true page or a static error page
   if (fallbackRoute.isStatic) {
@@ -410,7 +423,9 @@ const handleOriginResponse = async ({
   const { expires } = await s3StorePage({
     html,
     uri: s3Uri,
-    basePath,
+    // SST: NextjsSite construct performs atomic deployment, and the site
+    // is deployed to a folder prefixed with the buildId.
+    basePath: `${basePath}/deploy-${manifest.buildId}`,
     bucketName: bucketName || "",
     buildId: manifest.buildId,
     pageData: renderOpts.pageData,

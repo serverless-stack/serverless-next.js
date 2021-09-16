@@ -1,5 +1,5 @@
 {
-  "name": "@sls-next/core",
+  "name": "@serverless-stack/nextjs-site-core",
   "version": "3.4.0-alpha.1",
   "description": "Handles Next.js routing independent of provider",
   "publishConfig": {

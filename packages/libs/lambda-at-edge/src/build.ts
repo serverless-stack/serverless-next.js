@@ -719,6 +719,11 @@ class Builder {
       if (debugMode) {
         // @ts-ignore
         subprocess.stdout.pipe(process.stdout);
+
+        // SST: Also print out stderr to screen. So when building the Next.js
+        //      app fails, the error is displayed on the screen.
+        // @ts-ignore
+        subprocess.stderr.pipe(process.stderr);
       }
 
       await subprocess;

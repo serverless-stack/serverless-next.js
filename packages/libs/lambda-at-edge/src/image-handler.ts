@@ -89,7 +89,13 @@ export const handler = async (
     setCustomHeaders({ res, req, responsePromise }, routesManifest);
 
     await imageOptimizer(
-      { basePath: basePath, bucketName: bucketName || "", region: region },
+      // SST: NextjsSite construct performs atomic deployment, and the site
+      // is deployed to a folder prefixed with the buildId.
+      {
+        basePath: `${basePath}/deploy-${manifest.buildId}`,
+        bucketName: bucketName || "",
+        region: region
+      },
       imagesManifest,
       req,
       res,
