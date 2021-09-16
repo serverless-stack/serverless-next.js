@@ -1,6 +1,6 @@
 {
   "name": "@serverless-stack/nextjs-core",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Handles Next.js routing independent of provider",
   "publishConfig": {
     "access": "public"
