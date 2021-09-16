@@ -1,6 +1,6 @@
 {
   "name": "@sls-next/serverless-patched",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Patched serverless package",
   "publishConfig": {
     "access": "public"
