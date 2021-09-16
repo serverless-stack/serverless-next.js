@@ -5,6 +5,7 @@ import type {
 } from "aws-lambda";
 import { ApiManifest, PageManifest } from "@serverless-stack/nextjs-core";
 export {
+  Manifest,
   ImageConfig,
   ImagesManifest,
   RoutesManifest
@@ -20,7 +21,7 @@ export type OriginRequestDefaultHandlerManifest = PageManifest & {
   regenerationQueueName?: string;
 };
 
-export type OriginRequestImageHandlerManifest = {
+export type OriginRequestImageHandlerManifest = Manifest & {
   enableHTTPCompression?: boolean;
   domainRedirects?: {
     [key: string]: string;
