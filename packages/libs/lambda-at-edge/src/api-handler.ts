@@ -11,11 +11,16 @@ import {
 import { CloudFrontResultResponse } from "aws-lambda";
 import { createExternalRewriteResponse } from "./routing/rewriter";
 import { handleApi } from "@serverless-stack/nextjs-core";
+import setNextjsSiteEnvironment from "./lib/setNextjsSiteEnvironment";
 import { removeBlacklistedHeaders } from "./headers/removeBlacklistedHeaders";
 
 export const handler = async (
   event: OriginRequestEvent
 ): Promise<CloudFrontResultResponse> => {
+  // SST set NextjsSite environment because Lambda@Edge does not support
+  //     environment variables
+  setNextjsSiteEnvironment();
+
   const request = event.Records[0].cf.request;
   const routesManifest: RoutesManifest = RoutesManifestJson;
   const buildManifest: OriginRequestApiHandlerManifest = manifest;

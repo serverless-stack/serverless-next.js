@@ -37,6 +37,7 @@ import { externalRewrite } from "./routing/rewriter";
 import { removeBlacklistedHeaders } from "./headers/removeBlacklistedHeaders";
 import { s3BucketNameFromEventRequest } from "./s3/s3BucketNameFromEventRequest";
 import { triggerStaticRegeneration } from "./lib/triggerStaticRegeneration";
+import setNextjsSiteEnvironment from "./lib/setNextjsSiteEnvironment";
 import { s3StorePage } from "./s3/s3StorePage";
 
 const basePath = RoutesManifestJson.basePath;
@@ -84,6 +85,10 @@ const normaliseS3OriginDomain = (s3Origin: CloudFrontS3Origin): string => {
 export const handler = async (
   event: OriginRequestEvent | OriginResponseEvent
 ): Promise<CloudFrontResultResponse | CloudFrontRequest> => {
+  // SST set NextjsSite environment because Lambda@Edge does not support
+  //     environment variables
+  setNextjsSiteEnvironment();
+
   const manifest: OriginRequestDefaultHandlerManifest = Manifest;
   let response: CloudFrontResultResponse | CloudFrontRequest;
   const prerenderManifest: PrerenderManifestType = PrerenderManifest;

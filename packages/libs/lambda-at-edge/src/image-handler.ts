@@ -20,6 +20,7 @@ import url from "url";
 import { imageOptimizer } from "./images/imageOptimizer";
 import { removeBlacklistedHeaders } from "./headers/removeBlacklistedHeaders";
 import { s3BucketNameFromEventRequest } from "./s3/s3BucketNameFromEventRequest";
+import setNextjsSiteEnvironment from "./lib/setNextjsSiteEnvironment";
 
 const basePath = RoutesManifestJson.basePath;
 
@@ -37,6 +38,10 @@ const isImageOptimizerRequest = (uri: string): boolean =>
 export const handler = async (
   event: OriginRequestEvent
 ): Promise<CloudFrontResultResponse> => {
+  // SST set NextjsSite environment because Lambda@Edge does not support
+  //     environment variables
+  setNextjsSiteEnvironment();
+
   const request = event.Records[0].cf.request;
   const routesManifest: RoutesManifest = RoutesManifestJson;
   const buildManifest: OriginRequestImageHandlerManifest = manifest;

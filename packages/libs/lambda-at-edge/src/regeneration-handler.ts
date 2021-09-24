@@ -5,10 +5,15 @@ import {
   OriginRequestDefaultHandlerManifest,
   RegenerationEvent
 } from "./types";
+import setNextjsSiteEnvironment from "./lib/setNextjsSiteEnvironment";
 import { s3StorePage } from "./s3/s3StorePage";
 import { renderPageToHtml } from "@serverless-stack/nextjs-core";
 
 export const handler = async (event: AWSLambda.SQSEvent): Promise<void> => {
+  // SST set NextjsSite environment because Lambda@Edge does not support
+  //     environment variables
+  setNextjsSiteEnvironment();
+
   await Promise.all(
     event.Records.map(async (record) => {
       const regenerationEvent: RegenerationEvent = JSON.parse(record.body);
